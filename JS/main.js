@@ -10,9 +10,9 @@ function insertItems() {
       `
      <div class="item-wrapper" data-item-no="${i}">
           <div class="img-wrapper">
-            <img src=".${itemsData[i]["image"]["desktop"]}" alt="${itemsData[i]["name"]}">
+            <img src="${itemsData[i]["image"]["desktop"]}" alt="${itemsData[i]["name"]}">
             <button data-item-no="${i}" class="add-button">
-              <img src="../assets/images/icon-add-to-cart.svg" alt="">
+              <img src="./assets/images/icon-add-to-cart.svg" alt="">
               Add to cart
             </button>
             <div class="add-button-active">
@@ -144,7 +144,7 @@ function updateCart(index) {
         `
         <div class="confirmed-item flex-center-sb" id="confirmed-item-${i}">
           <div class="confirmed-item-info">
-            <img src=".${itemsData[i]["image"]["thumbnail"]}" alt="">
+            <img src="${itemsData[i]["image"]["thumbnail"]}" alt="">
             <div class="cart-item-content">
               <p>${itemsData[i]["name"]}</p>
               <ul>
