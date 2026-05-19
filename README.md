@@ -74,7 +74,7 @@ I used GPT and google's search AI to explain jargon from MDN's docs, and to look
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [Product with list cart](https://infamoustheif.github.io/Product-list-with-cart/)
 - Frontend Mentor - [@InfamousTheif](https://www.frontendmentor.io/profile/InfamousTheif)
 
 ## Acknowledgments
