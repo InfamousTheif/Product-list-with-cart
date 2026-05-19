@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="/CSS/style.css">
+  <script type="module" src="/JS/main.js" defer></script>
+  
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+   <div class="items-wrapper">
+     <h1>Desserts</h1>
+
+      <div class="responsive-grid">
+
+        
+
+       
+ 
+      </div>
+   </div>
+
+    <div class="cart-wrapper">
+      <h2>Your Cart (0)</h2>
+      <div class="empty-img-wrapper">
+        <img src="/assets/images/illustration-empty-cart.svg" alt="a cake slice being taken from a whole cake">
+        <p>Your added items will appear here</p>
+      </div>
+
+      <div class="cart-items-wrapper">
+        
+      </div>
+
+      <div class="cart-total-wrapper flex-center-sb">
+        <p>Order Total</p>
+        <p class="cart-total-price">$46.50</p>
+      </div>
+
+      <div class="delivery-info-wrapper">
+        <img src="/assets/images/icon-carbon-neutral.svg" alt="">
+        <p>
+          This is a <span>carbon-neutral</span> delivery
+        </p>
+      </div>
+
+      <button class="confirm-button">
+        Confirm Order
+      </button>
+    </div>
+
+  </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+  
+  <div class="dark-overlay">
+
+    <div class="confirmed-wrapper">
+
+      <img src="/assets/images/icon-order-confirmed.svg" alt="">
+
+      <div class="confirmed-text">
+        <h2>Order Confirmed</h2>
+        <p>We hope you enjoy your food!</p>  
+      </div>
+
+      <div class="confirmed-items-wrapper">
+        <div class="confirmed-total-wrapper flex-center-sb">
+          <p>Order Total</p>
+          <p class="confirmed-cart-total-price cart-total-price">$46.50</p>
+        </div>
+      </div>
+
+      <button class="new-order-button">
+        Start new order
+      </button>
+    </div>
+
+  </div>
+
+</body>
+</html>
