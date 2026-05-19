@@ -16,7 +16,7 @@
 .prettierignore
 
 # useless stuff
-README.md
+README-useless.md
 style-guide.md
 AGENTS.md
 CLAUDE.md
