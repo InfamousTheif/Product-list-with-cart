@@ -2,7 +2,7 @@ import itemsData from "../data.json" with { type: "json"};
 console.log(itemsData)
 
 const gridWrapper = document.querySelector(".responsive-grid");
-let itemAmount = new Array(9).fill(0); // An array that keeps track of the number of items ordered for each product
+let itemAmount = new Array(itemsData.length).fill(0); // An array that keeps track of the number of items ordered for each product
 
 function insertItems() {
   for(let i = 0; i < itemsData.length; i++) {
@@ -42,6 +42,9 @@ const incrementButtons = document.querySelectorAll(".increment-button");
 const cartWrapper = document.querySelector(".cart-wrapper");
 const cartItemsWrapper = document.querySelector(".cart-items-wrapper");
 const confirmedItemsWrapper = document.querySelector(".confirmed-items-wrapper");
+const allItemsWrapper = document.querySelectorAll(".item-wrapper");
+const cartTotalPriceWrapper = document.querySelector(".cart-total-price");
+const confirmedTotalPriceWrapper = document.querySelector(".confirmed-cart-total-price ");
 
 function updateAmount(index) {
   document.querySelector(
@@ -59,7 +62,7 @@ function addCartHandler() {
       console.log(itemAmount);
       document.querySelector(`div[data-item-no="${index}"]`).classList.add("active"); // changing the item-wrapper div to active 
       updateAmount(index);
-      updateCart(index);
+      updateCart();
     });
   });
 
@@ -72,7 +75,7 @@ function addCartHandler() {
       };
       console.log(itemAmount);
       updateAmount(index);
-      updateCart(index);
+      updateCart();
     });
   });
 
@@ -87,13 +90,13 @@ function addCartHandler() {
       };
       console.log(itemAmount);
       updateAmount(index);
-      updateCart(index);
+      updateCart();
     });
   });
   
 };
 
-function updateCart(index) {
+function updateCart() {
   let amountSum = 0; // the total number of products ordered
   let cartTotalPrice = 0;
   amountSum = itemAmount.reduce((acc, currentVal) => acc + currentVal, 0);
@@ -133,7 +136,7 @@ function updateCart(index) {
               <li class="cart-item-total">$${itemTotalPrice.toFixed(2)}</li>
             </ul>
           </div>
-          <button class="remove-item-button">
+          <button class="remove-item-button" data-item-no="${i}">
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="currentColor" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
           </button>
         </div>
@@ -160,9 +163,9 @@ function updateCart(index) {
     }
   };
 
-  document.querySelector(".cart-total-price").textContent = `$${cartTotalPrice.toFixed(2)}`;
+  cartTotalPriceWrapper.textContent = `$${cartTotalPrice.toFixed(2)}`;
 
-  document.querySelector(".confirmed-cart-total-price ").textContent = `$${cartTotalPrice.toFixed(2)}`;
+  confirmedTotalPriceWrapper.textContent = `$${cartTotalPrice.toFixed(2)}`;
 };
 
 function handleConfirmButtons() {
@@ -178,12 +181,27 @@ function handleConfirmButtons() {
     darkOverlay.classList.remove("active");
     itemAmount.fill(0); // reset the number of each product ordered to zero.
     updateCart();
-    document.querySelectorAll(".item-wrapper").forEach((item) => {
+    allItemsWrapper.forEach((item) => {
       item.classList.remove("active");
     }); // a loop that removes the active state from each item so that the increment button disappears
   });
 };
 
+function handleRemoveButton() {
+  //Event delegation for dynamically created remove buttons
+  document.addEventListener("click", (e) => {
+  const button = e.target.closest(".remove-item-button");
+
+  if (button) {
+    const index = button.dataset.itemNo;
+    button.parentElement.remove();
+    itemAmount[index] = 0;
+    updateCart();
+    document.querySelector(`.item-wrapper[data-item-no="${index}"]`).classList.remove("active");
+    };
+  });
+};
+
 addCartHandler();
 handleConfirmButtons();
-        
+handleRemoveButton();
