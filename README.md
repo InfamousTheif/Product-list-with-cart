@@ -53,6 +53,18 @@ Users should be able to:
 // I learnt that the reduce method squashes all the values in an array to a single value.
 let amountSum = 0; // the total number of products ordered
 amountSum = itemAmount.reduce((acc, currentVal) => acc + currentVal, 0);
+// I learnt event delegation
+document.addEventListener("click", (e) => {
+  const button = e.target.closest(".remove-item-button");
+
+  if (button) {
+    const index = button.dataset.itemNo;
+    button.parentElement.remove();
+    itemAmount[index] = 0;
+    updateCart();
+    document.querySelector(`.item-wrapper[data-item-no="${index}"]`).classList.remove("active");
+    };
+  });
 ```
 
 ### Continued development
