@@ -33,7 +33,7 @@
    </div>
 
     <div class="cart-wrapper">
-      <h2>Your Cart (0)</h2>
+      <h2 tabindex="-1">Your Cart (0)</h2>
       <div class="empty-img-wrapper">
         <img src="./assets/images/illustration-empty-cart.svg" alt="a cake slice being taken from a whole cake">
         <p>Your added items will appear here</p>
@@ -55,7 +55,10 @@
         </p>
       </div>
 
-      <button class="confirm-button">
+      <button 
+        class="confirm-button"
+        aria-expanded="false"
+        aria-controls="confirmation-wrapper">
         Confirm Order
       </button>
     </div>
@@ -69,12 +72,12 @@
   
   <div class="dark-overlay">
 
-    <div class="confirmed-wrapper">
+    <div class="confirmed-wrapper" id="confirmation-wrapper">
 
       <img src="./assets/images/icon-order-confirmed.svg" alt="">
 
       <div class="confirmed-text">
-        <h2>Order Confirmed</h2>
+        <h2  tabindex="-1">Order Confirmed</h2>
         <p>We hope you enjoy your food!</p>  
       </div>
 

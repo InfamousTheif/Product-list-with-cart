@@ -45,6 +45,7 @@ const confirmedItemsWrapper = document.querySelector(".confirmed-items-wrapper")
 const allItemsWrapper = document.querySelectorAll(".item-wrapper");
 const cartTotalPriceWrapper = document.querySelector(".cart-total-price");
 const confirmedTotalPriceWrapper = document.querySelector(".confirmed-cart-total-price ");
+const cartWrapperHeader = document.querySelector(".cart-wrapper > h2");
 
 function updateAmount(index) {
   document.querySelector(
@@ -102,6 +103,7 @@ function updateCart() {
   amountSum = itemAmount.reduce((acc, currentVal) => acc + currentVal, 0);
 
   cartWrapper.classList.add("active");
+  cartWrapperHeader.textContent = `Your Cart (${amountSum})`
 
   if(amountSum <= 0) {
     cartWrapper.classList.remove("active"); // no items in the cart means an inactive cart
@@ -172,13 +174,18 @@ function handleConfirmButtons() {
   const confirmButton = document.querySelector(".confirm-button");
   const darkOverlay = document.querySelector(".dark-overlay");
   const newOrderButton = document.querySelector(".new-order-button");
+  const confirmedHeader = document.querySelector(".confirmed-text > h2"); // confirmation box's header
 
   confirmButton.addEventListener("click", () => {
+    confirmButton.setAttribute("aria-expanded", "true");
     darkOverlay.classList.add("active");
+    confirmedHeader.focus();
   });
 
   newOrderButton.addEventListener("click", () => {
+    confirmButton.setAttribute("aria-expanded", "false");
     darkOverlay.classList.remove("active");
+    cartWrapperHeader.focus();
     itemAmount.fill(0); // reset the number of each product ordered to zero.
     updateCart();
     allItemsWrapper.forEach((item) => {
